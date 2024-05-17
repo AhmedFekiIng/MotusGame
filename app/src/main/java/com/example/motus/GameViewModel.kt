@@ -95,12 +95,13 @@ class GameViewModel(
     }
 
     private fun getInitialDisplayWord(secretWord: String): String {
-        return secretWord.substring(0, 1) + "_ ".repeat(secretWord.length - 1)
+        return secretWord.substring(0, 1) + "_".repeat(secretWord.length - 1)
     }
 
     private fun updateGameState() {
+        val currentState = _gameState.value
         _gameState.value = GameState(
-            displayWord = displayWord ?: getInitialDisplayWord(secretWord),
+            displayWord = getInitialDisplayWord(secretWord),
             displayWordWithoutOrder = "",
             remainingAttempts = remainingAttempts,
             secretWord = secretWord,

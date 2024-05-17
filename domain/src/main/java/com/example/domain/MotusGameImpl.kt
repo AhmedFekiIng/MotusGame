@@ -13,7 +13,6 @@ class MotusGameImpl() : MotusGameInteractor {
     override suspend fun checkGuess(guess: String, wordList: List<String>): GuessResult {
         require(guess.length == secretWord.length)
         val isValidGuess = wordList.contains(guess)
-        if (!isValidGuess) return GuessResult(isValidGuess = false)
 
         attemptsLeft--
 
@@ -39,7 +38,7 @@ class MotusGameImpl() : MotusGameInteractor {
             correctIndices = correctIndices,
             misplacedIndices = misplacedIndices,
             remainingAttempts = attemptsLeft,
-            isValidGuess = true
+            isValidGuess = isValidGuess
         )
     }
 
